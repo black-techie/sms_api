@@ -35,6 +35,8 @@ def sms():
 			"to": "0789105606",
 			"content": "testing"
         })
+    
+    return {"response": "success"}, 200
 
 
 if __name__ == "__main__":
