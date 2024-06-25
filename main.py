@@ -34,6 +34,7 @@ def android():
 
 @app.route("/sms", methods=["GET", "POST"])
 def sms():
+    current_time = get_dar_es_salaam_time()
     plate = request.args.get("plate")
     a = db.getDb("./json.json")
     if request.method == "GET":
@@ -41,7 +42,7 @@ def sms():
             {
                 "id": str(uuid.uuid4()),
                 "to": "0674274382",
-                "content": "Urgent:\nMobile Phone Usage Detected.\nThis is to inform you that a car driver was detected using a mobile phone while driving.\nNumber plate: "+str(plate)+"\nTime: "+str(get_dar_es_salaam_time())}",
+                "content": "Urgent:\nMobile Phone Usage Detected.\nThis is to inform you that a car driver was detected using a mobile phone while driving.\nNumber plate: "+str(plate)+"\nTime: "+str(current_time),
             }
         )
 
