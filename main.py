@@ -2,9 +2,16 @@ from flask import Flask, request, jsonify
 import uuid
 import os
 from pysondb import db
+from datetime import datetime
+import pytz
 
 
 app = Flask(__name__)
+
+def get_dar_es_salaam_time():
+    tz = pytz.timezone('Africa/Dar_es_Salaam')
+    dar_es_salaam_time = datetime.now(tz)
+    return dar_es_salaam_time
 
 @app.route("/")
 def index():
@@ -34,7 +41,7 @@ def sms():
             {
                 "id": str(uuid.uuid4()),
                 "to": "0674274382",
-                "content": "Urgent:\nMobile Phone Usage Detected\nThis is to inform you that a car driver was detected using a mobile phone while driving.\nNumber plate: {plate}""",
+                "content": "Urgent:\nMobile Phone Usage Detected.\nThis is to inform you that a car driver was detected using a mobile phone while driving.\nNumber plate: "+str(plate)+"\nTime: "+str(get_dar_es_salaam_time())}",
             }
         )
 
