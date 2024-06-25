@@ -6,6 +6,11 @@ from pysondb import db
 
 app = Flask(__name__)
 
+@app.route("/")
+def index():
+    sms = db.getDb("./json.json")
+    sms = sms.getAll()
+    return jsonify(sms)
 
 @app.route("/android", methods=["GET", "POST"])
 def android():
