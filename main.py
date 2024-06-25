@@ -9,6 +9,7 @@ sms = []
 
 @app.route("/android", methods=["GET", "POST"])
 def android():
+    global sms
     if request.method == "GET":
         return {"medic-gateway": True}, 200
     
@@ -20,6 +21,7 @@ def android():
 
 @app.route("/sms", methods = ["GET", "POST"])
 def sms():
+    global sms
     if request.method == "GET":
         sms.append({
 			"id": str(uuid.uuid4()),
