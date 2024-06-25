@@ -34,12 +34,7 @@ def sms():
             {
                 "id": str(uuid.uuid4()),
                 "to": "0674274382",
-                "content": f"""\
-                            Urgent: Mobile Phone Usage Detected\n
-                                    This is to inform you that a car 
-                                    driver was detected using a 
-                                    mobile phone while driving.\n
-                                    Number plate: {plate}""",
+                "content": "Urgent:\nMobile Phone Usage Detected\nThis is to inform you that a car driver was detected using a mobile phone while driving.\nNumber plate: {plate}""",
             }
         )
 
