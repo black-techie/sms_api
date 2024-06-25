@@ -2,16 +2,14 @@ from flask import Flask, request, jsonify
 import uuid
 import os
 from pysondb import db
-from datetime import datetime
-import pytz
+from datetime import datetime, timedelta, timezone
 
 
 app = Flask(__name__)
 
 def get_dar_es_salaam_time():
-    tz = pytz.timezone('Africa/Dar_es_Salaam')
-    dar_es_salaam_time = datetime.now(tz)
-    return dar_es_salaam_time
+    EAT = timezone(timedelta(hours=3))  # East Africa Time (UTC+3)
+    return datetime.now(EAT)
 
 @app.route("/")
 def index():
