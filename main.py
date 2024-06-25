@@ -22,7 +22,7 @@ def android():
 
 @app.route("/sms", methods=["GET", "POST"])
 def sms():
-    plate = "T553 AXD"
+    plate = request.args.get("plate")
     a = db.getDb("./json.json")
     if request.method == "GET":
         a.add(
